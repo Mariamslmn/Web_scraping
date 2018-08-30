@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="jumbotron text-center">
+            <h1 class="mission-text">Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+    </header>
+
+    <!-- Latest Mars News -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text">Latest Mars News</h2>
+                <h3 class="news_title" >{{ mars.news_text }}</h3>
+                <p>{{ mars.news_p }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Mars Image / Current Weather on Mars / Mars Facts -->
+    <main class="container-fluid">
+
+        <div class="row" id="main-section">
+
+            <section id="figure" class="section-style col-md-7">
+
+
+                <h2 class="text">Featured Mars Image</h2>
+                <img class="featured-image" src={{ mars.featured_image_url }} alt="Mars Featured Image">
+            </section>
+            <div class="section-style col-md-4" >
+                <div id="rcorners2">
+                <h4  class="text">Current Weather on Mars</h4>
+                <p>{{ mars.mars_weather }}</p>
+                </div>
+                <div id="rTable">
+                <h4 class="text">Mars Facts</h4>
+                <table>{{ mars.html_table|safe}}</table>
+                </div>
+            </div>
+
+
+        </div>
+        <!---->
+    </main>
+
+
+        <!-- Mars Hemispheres -->
+        <div class="row" style="margin: 5% 5% 5% 5%;">
+            <div class="col-md-12">
+                <h5 class="image-text">Mars Hemispheres</h5>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="margin:3%">
+            <div class="section-style">
+                <div class="row">
+                    {% for x in range(4) %}
+                    <div class="col-md-5 border " style="margin: 20px 20px 20px 20px;">
+                        <div>
+                            <article class="padding-image">
+                                <img src="{{mars.hemisphere_image_urls[x]['img_url']}}" style="width:100%">
+                            </article>
+
+                            <p class="caption">{{mars.hemisphere_image_urls[x]['title']}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>

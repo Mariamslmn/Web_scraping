@@ -1,0 +1,33 @@
+<!-- Mars Hemispheres -->
+    <div class="row"><h5 class="image-text">Mars Hemispheres</h5></div>
+    
+    <main class="container-fluid" style="margin:3%">
+        <div class="section-style">
+            <div class="row">
+
+
+                {% for x in range(4) %}
+                <div class="col-md-5 border " style="margin: 20px 20px 20px 20px;">
+                    <div>
+                        <article class="padding-image">
+
+
+                            <img src="{{mars.hemisphere_image_urls[x]['img_url']}}" style="width:100%">
+
+                        </article>
+
+                        <p class="caption">{{mars.hemisphere_image_urls[x]['title']}}</p>
+                    </div>
+
+                </div>
+
+
+
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
